@@ -1,22 +1,24 @@
-/*import 'package:flutter/material.dart';
+/*
+import 'package:flutter/material.dart';
 
 class Homescreen extends StatelessWidget {
+  const Homescreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       //base screen
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: Text("Homescreen"),
+        title: const Text("Homescreen"),
         centerTitle: true,
-        // context.read<SubjectBloc>()
         // actions: [],
       ),
       body:
           // Stack()
           // Row()
           Column(children: [
-        Text(
+        const Text(
           'Ibra',
           style: TextStyle(fontSize: 28),
         ),
@@ -28,6 +30,7 @@ class Homescreen extends StatelessWidget {
     );
   }
 }
+
 */
 /*
 import 'package:flutter/material.dart';
@@ -35,6 +38,8 @@ import 'package:flutter_basic/magazin_item.dart';
 import 'package:flutter_basic/title.dart';
 
 class Homescreen extends StatelessWidget {
+  const Homescreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +50,7 @@ class Homescreen extends StatelessWidget {
             Row(
               children: [
                 TitleWidget('الاخبار'),
-                SizedBox(width: 4),
+                const SizedBox(width: 4),
                 // Container(width: 2),
                 TitleWidget('المجلات '),
               ],
@@ -69,8 +74,7 @@ import 'package:flutter_basic/title.dart';
 class Homescreen extends StatelessWidget {
   // List<Category> categories = List.filled(100, Category('cars', 'car.jpg'));
   List<Category> categories = [];
-
-  Homescreen() {
+  Homescreen({super.key}) {
     for (int i = 0; i < 100; i++) {
       categories.add(Category('cars $i', 'car.jpg'));
     }
@@ -81,7 +85,7 @@ class Homescreen extends StatelessWidget {
         //base screen
         appBar: AppBar(),
         body: SingleChildScrollView(
-          child: Column(children: categories.map(MapCategoryToMagazineItem).toList()
+          child: Column(children: categories.map(mapCategoryToMagazineItem).toList()
           ),
           )
           );
@@ -90,120 +94,10 @@ class Homescreen extends StatelessWidget {
   }
 }
 
-MagazineItem MapCategoryToMagazineItem(Category category) {
+MagazineItem mapCategoryToMagazineItem(Category category) {
   return MagazineItem(category);
 }
 */
-/*
-import 'package:flutter/material.dart';
-import 'package:flutter_basic/category.dart';
-import 'package:flutter_basic/magazin_item.dart';
-import 'package:flutter_basic/title.dart';
-
-class Homescreen extends StatelessWidget {
-  // List<Category> categories = List.filled(100, Category('cars', 'car.jpg'));
-  List<Category> categories = [];
-
-  Homescreen() {
-    for (int i = 0; i < 100; i++) {
-      categories.add(Category('cars $i', 'car.jpg'));
-    }
-  }
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        //base screen
-        appBar: AppBar(),
-        body: Column(
-          children: [
-            Row(
-              children: [
-                TitleWidget('الاخبار'),
-                SizedBox(width: 4),
-                // Container(width: 2),
-                TitleWidget('المجلات '),
-              ],
-            ),
-            // Expanded => (Column , row )
-            Expanded(
-              child: 
-              GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  childAspectRatio: 4 / 3,
-                  // mainAxisSpacing: 9,
-                  // crossAxisSpacing: 9
-                ),
-                itemBuilder: buildMagazineItem,
-                itemCount: categories.length,
-              ),
-            )
-          ],
-        ));
-
-    // ListView.builder(itemBuilder: buildMagazineItem ,itemCount: categories.length,));
-  }
-
-  MagazineItem buildMagazineItem(BuildContext context, int index) {
-    return MagazineItem(categories[index]);
-  }
-}
-*/
-/*
-import 'package:flutter/material.dart';
-import 'package:flutter_basic/category.dart';
-import 'package:flutter_basic/magazin_item.dart';
-import 'package:flutter_basic/title.dart';
-
-class Homescreen extends StatelessWidget {
-  // List<Category> categories = List.filled(100, Category('cars', 'car.jpg'));
-  List<Category> categories = [];
-
-  Homescreen() {
-    for (int i = 0; i < 100; i++) {
-      categories.add(Category('cars $i', 'car.jpg'));
-    }
-  }
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        //base screen
-        appBar: AppBar(),
-        body: Column(
-          children: [
-            Row(
-              children: [
-                TitleWidget('الاخبار'),
-                SizedBox(width: 4),
-                // Container(width: 2),
-                TitleWidget('المجلات '),
-              ],
-            ),
-            // Expanded => (Column , row )
-            Expanded(
-              child: GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  childAspectRatio: 4 / 3,
-                  // mainAxisSpacing: 9,
-                  // crossAxisSpacing: 9
-                ),
-                itemBuilder: buildMagazineItem, //passing function
-                itemCount: categories.length,
-              ),
-            )
-          ],
-        ));
-
-    // ListView.builder(itemBuilder: buildMagazineItem ,itemCount: categories.length,));
-  }
-
-// function declearation
-  MagazineItem buildMagazineItem(BuildContext context, int index) {
-    return MagazineItem(categories[index]);
-  }
-}
-*/
 
 import 'package:flutter/material.dart';
 import 'package:flutter_basic/category.dart';
@@ -211,9 +105,7 @@ import 'package:flutter_basic/magazin_item.dart';
 import 'package:flutter_basic/title.dart';
 
 class Homescreen extends StatelessWidget {
-  static const String routeName = 'home';
-
-  // List<Category> categories = List.filled(100, Category('cars', 'car.jpg'));
+  static const String routeName = '/';
   List<Category> categories = [];
 
   Homescreen({super.key}) {
@@ -232,7 +124,6 @@ class Homescreen extends StatelessWidget {
               children: [
                 TitleWidget('الاخبار'),
                 const SizedBox(width: 4),
-                // Container(width: 2),
                 TitleWidget('المجلات '),
               ],
             ),
@@ -245,23 +136,23 @@ class Homescreen extends StatelessWidget {
                   // mainAxisSpacing: 9,
                   // crossAxisSpacing: 9
                 ),
-                // function anyonums (arrow function)
-                // () =>   single_line,() {}  multi_line
+                itemBuilder: buildMagazineItem,
+                /*
+                function anyonums (arrow function)
+                 () =>   single_line,() {}  multi_line
                 itemBuilder: (context, index) =>
                     MagazineItem(categories[index]),
-
+                    */
                 itemCount: categories.length,
               ),
             )
           ],
         ));
-
     // ListView.builder(itemBuilder: buildMagazineItem ,itemCount: categories.length,));
   }
 
-// function declearation (not anyonums)
-//   MagazineItem buildMagazineItem(BuildContext context, int index) {
-//     return MagazineItem(categories[index]);
-//   }
-//
+  // function declearation (not anyonums)
+  MagazineItem buildMagazineItem(BuildContext context, int index) {
+    return MagazineItem(categories[index]);
+  }
 }

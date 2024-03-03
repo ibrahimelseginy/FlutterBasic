@@ -1,5 +1,4 @@
 // data class
-
 class Category {
   String title;
   String imageName;
